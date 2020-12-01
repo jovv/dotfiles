@@ -72,6 +72,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'tomasr/molokai'
+Plug 'preservim/nerdtree'
 
 call plug#end()
 
