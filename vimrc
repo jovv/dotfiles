@@ -38,6 +38,9 @@ set icon
 
 " highlight search hits
 set hlsearch
+set incsearch
+set linebreak
+map <silent> <leader><cr> :noh<cr>:redraw!<cr>
 
 " faster scrolling
 set ttyfast
@@ -65,6 +68,8 @@ endif
 
 call plug#begin('~/.vim/vimplugins')
 
+Plug 'sheerun/vim-polyglot'
+Plug 'vim-pandoc/vim-pandoc'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'tomasr/molokai'
 
