@@ -1,0 +1,17 @@
+{
+  "credsStore" : "ecr-login",
+  "credHelpers" : {
+    "ACCOUNTID.dkr.ecr.region.amazonaws.com" : "ecr-login",
+    "docker.io/DOCKERHUBUSER" : "osxkeychain"
+  },
+  "stackOrchestrator" : "kubernetes",
+  "experimental" : "disabled",
+  "HttpHeaders" : {
+    "User-Agent" : "Docker-Client/19.03.8 (darwin)"
+  },
+  "auths" : {
+    "https://index.docker.io/v1/" : {
+
+    }
+  }
+}
