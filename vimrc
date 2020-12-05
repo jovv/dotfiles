@@ -21,9 +21,14 @@ set nofixendofline
 
 set expandtab
 
-" no bracket matching
+" no bracket matching or foldng
 let g:loaded_matchparen=1
 set noshowmatch
+set foldmethod=manual
+
+" command history
+set history=100
+
 
 " no bkp or swap
 set nobackup
@@ -69,10 +74,13 @@ endif
 call plug#begin('~/.vim/vimplugins')
 
 Plug 'sheerun/vim-polyglot'
-Plug 'vim-pandoc/vim-pandoc'
+"Plug 'vim-pandoc/vim-pandoc'
+"Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'tomasr/molokai'
-Plug 'preservim/nerdtree'
+Plug 'preservim/NERDTree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -92,3 +100,5 @@ au FileType go nmap <leader>b :GoBuild!<CR>
 au FileType go nmap <leader>i :GoInstall!<CR>
 au FileType go nmap <leader>l :GoMetaLinter!<CR>
 
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
