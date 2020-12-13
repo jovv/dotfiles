@@ -1,0 +1,12 @@
+wrap: true
+margins:
+    left: 5
+    right: 5
+theme:
+    header: [dullGreen]
+    code: [dullRed]
+    emph: [italic]
+    strong: [bold,rgb#f08000]
+    blockQuote: [dullYellow,italic]
+images:
+    backend: iterm2
