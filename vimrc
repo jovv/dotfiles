@@ -81,6 +81,7 @@ Plug 'tomasr/molokai'
 Plug 'preservim/NERDTree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -102,3 +103,22 @@ au FileType go nmap <leader>l :GoMetaLinter!<CR>
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+" ALE
+" disable all linters by default
+let g:ale_linters_explicit = 1
+" lint on save only
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+" linters
+let g:ale_linters = {
+      \   'python': ['flake8', 'pylint'],
+      \}
+" formatters
+let g:ale_fixers = {
+      \    'python': ['yapf'],
+      \}
+let g:ale_fix_on_save = 1
+
+"nmap <leader>y :ALEFix<CR>
+
