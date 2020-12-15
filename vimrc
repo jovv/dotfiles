@@ -117,6 +117,7 @@ let g:ale_linters = {
 " formatters
 let g:ale_fixers = {
       \    'python': ['yapf'],
+      \    'terraform': ['terraform'],
       \}
 let g:ale_fix_on_save = 1
 
