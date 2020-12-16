@@ -113,6 +113,7 @@ let g:ale_lint_on_insert_leave = 0
 " linters
 let g:ale_linters = {
       \   'python': ['flake8', 'pylint'],
+      \   'yaml': ['yamllint'], 
       \}
 " formatters
 let g:ale_fixers = {
