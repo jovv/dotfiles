@@ -1,6 +1,13 @@
 # colors
 export LSCOLORS=exfxcxdxbxegedabagacad
 
+###
+# Go setup
+export GO111MODULE="on"
+export GOPATH=$HOME/go/
+export GOROOT=/usr/local/Cellar/go/1.15.5/libexec/
+export GOBIN=$HOME/go/bin
+
 # general aliases
 alias la='ls -lA'
 
