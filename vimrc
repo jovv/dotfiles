@@ -104,6 +104,10 @@ au FileType go nmap <leader>l :GoMetaLinter!<CR>
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
+" FZF
+nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <Leader>f :Rg<CR>
+
 " ALE
 " disable all linters by default
 let g:ale_linters_explicit = 1
