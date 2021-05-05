@@ -1,0 +1,115 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "terraform.format": {
+        "ignoreExtensionsOnSave": [
+            ".tfsmurf"
+        ]
+    },
+    "[terraform]": {
+        "editor.formatOnSave": true
+    },
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "extensions.ignoreRecommendations": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--max-line-length=80",
+        "--ignore=W291,W293,W504,E501"
+    ],
+    "explorer.confirmDragAndDrop": false,
+    "window.zoomLevel": 0,
+    "gitlens.advanced.messages": {
+        "suppressLineUncommittedWarning": true
+    },
+    "gitlens.advanced.telemetry.enabled": false,
+    "gitlens.blame.avatars": false,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "terraform.telemetry.enabled": false,
+    "files.useExperimentalFileWatcher": true,
+    "go.formatTool": "gofmt",
+    "go.autocompleteUnimportedPackages": true,
+    "todo-tree.tree.showScanModeButton": false,
+    "todo-tree.highlights.defaultHighlight": {
+        "icon": "alert",
+        "type": "text",
+        "foreground": "white",
+        "background": "#FFA500",
+        "opacity": 50,
+        "iconColour": "blue"
+    },
+    "yaml.format.enable": true,
+    "todo-tree.tree.flat": true,
+    "todo-tree.tree.disableCompactFolders": true,
+    "todo-tree.tree.autoRefresh": true,
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "NOTE",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]"
+    ],
+    "[python]": {
+        "editor.formatOnSave": true
+    },
+    "python.formatting.provider": "yapf",
+    "[yaml]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "none",
+        "gitlens.codeLens.scopes": [
+            "document"
+        ],
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        }
+    },
+    "[scala]": {
+        "editor.formatOnSave": true
+    },
+    "[go]": {
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "todo-tree.general.enableFileWatcher": true,
+    "todo-tree.general.statusBar": "total",
+    "gitlens.defaultDateStyle": "absolute",
+    "launch": {
+        "configurations": [],
+        "compounds": []
+    },
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "terminal.integrated.inheritEnv": false,
+    "workbench.panel.defaultLocation": "right",
+    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+    "go.useLanguageServer": true,
+    "editor.formatOnSave": true,
+    "python.testing.pytestEnabled": true,
+    "python.testing.autoTestDiscoverOnSaveEnabled": false,
+    "python.testing.promptToConfigure": false,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+}
