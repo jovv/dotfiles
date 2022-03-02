@@ -24,3 +24,7 @@ alias gotccnt='go test -covermode=count -coverprofile=count.out && go tool cover
 alias awsbj='aws batch describe-jobs --jobs'
 alias awsbjl='aws logs get-log-events --log-group-name /aws/batch/job --log-stream-name'
 
+# clean log output
+# removes color codes
+# e.g. `some-command-with-logging | clo > output.log`
+alias clo="sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'"
