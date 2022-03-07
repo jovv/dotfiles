@@ -16,3 +16,10 @@ alias setjdk11='sudo update-java-alternatives --set java-1.11.0-openjdk-amd64'
 
 # processes
 alias zombies='ps axo stat,ppid,pid,comm | grep -w defunct'
+
+# terraform
+alias tg='terragrunt'
+alias tf='terraform'
+
+# argoCD
+alias argo='argocd'
