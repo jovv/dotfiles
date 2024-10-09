@@ -40,102 +40,104 @@ COLOR_NONE="\[\e[0m\]"
 
 # determine time
 function parse_datetime() {
-	date | tr -s ' ' | cut -d ' ' -f5
+  # inconsistent across terminals or shells
+  # date | tr -s ' ' | cut -d ' ' -f5
+  printf '%(%H:%M:%S)T' -1
 }
 
 function set_time() {
-	time_str=$(parse_datetime)
-	TIME="${WHITE}(${time_str})${COLOR_NONE} "
+  time_str=$(parse_datetime)
+  TIME="${WHITE}(${time_str})${COLOR_NONE} "
 }
 
 # determine git branch name
 function parse_git_branch() {
-	git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+  git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
 # determine mercurial branch name
 function parse_hg_branch() {
-	hg branch 2>/dev/null | awk '{print " (" $1 ")"}'
+  hg branch 2>/dev/null | awk '{print " (" $1 ")"}'
 }
 
 # Determine the branch/state information for this git repository.
 function set_git_branch() {
-	# Get the name of the branch.
-	branch=$(parse_git_branch)
-	# if not git then maybe mercurial
-	if [ "$branch" == "" ]; then
-		branch=$(parse_hg_branch)
-	fi
+  # Get the name of the branch.
+  branch=$(parse_git_branch)
+  # if not git then maybe mercurial
+  if [ "$branch" == "" ]; then
+    branch=$(parse_hg_branch)
+  fi
 
-	# Set the final branch string.
-	BRANCH="${CYAN}${branch}${COLOR_NONE} "
+  # Set the final branch string.
+  BRANCH="${CYAN}${branch}${COLOR_NONE} "
 }
 
 function set_k8s_namespace() {
-	kubectl config view --minify -o jsonpath="{.contexts[0].context.namespace}"
+  kubectl config view --minify -o jsonpath="{.contexts[0].context.namespace}"
 }
 
 function set_k8s_context() {
-	kubectl config current-context
+  kubectl config current-context
 }
 
 function set_k8s_prompt() {
-	CONTEXT=$(set_k8s_context)
-	NAMESPACE=$(set_k8s_namespace)
-	K8S="${LIGHT_WHITE}[${PURPLE}${CONTEXT}|${NAMESPACE}${LIGHT_WHITE}]${COLOR_NONE}"
+  CONTEXT=$(set_k8s_context)
+  NAMESPACE=$(set_k8s_namespace)
+  K8S="${LIGHT_WHITE}[${PURPLE}${CONTEXT}|${NAMESPACE}${LIGHT_WHITE}]${COLOR_NONE}"
 }
 
 function set_aws_profile() {
-	CURRENT_AWS_PROFILE=" ${WHITE}(${AWS_PROFILE})${COLOR_NONE} "
+  CURRENT_AWS_PROFILE=" ${WHITE}(${AWS_PROFILE})${COLOR_NONE} "
 }
 
 # Return the prompt symbol to use, colorized based on the return value of the
 # previous command.
 function set_prompt_symbol() {
-	if test $1 -eq 0; then
-		PROMPT_SYMBOL="\$"
-	else
-		PROMPT_SYMBOL="${LIGHT_WHITE}\$${COLOR_NONE}"
-	fi
+  if test $1 -eq 0; then
+    PROMPT_SYMBOL="\$"
+  else
+    PROMPT_SYMBOL="${LIGHT_WHITE}\$${COLOR_NONE}"
+  fi
 }
 
 # Determine active Python virtualenv details.
 # NOTE: obsolete as we're using conda envs
 function set_virtualenv() {
-	if test -z "$VIRTUAL_ENV"; then
-		PYTHON_VIRTUALENV=""
-	else
-		PYTHON_VIRTUALENV="${BLUE}[$(basename \"$VIRTUAL_ENV\")]${COLOR_NONE} "
-	fi
+  if test -z "$VIRTUAL_ENV"; then
+    PYTHON_VIRTUALENV=""
+  else
+    PYTHON_VIRTUALENV="${BLUE}[$(basename \"$VIRTUAL_ENV\")]${COLOR_NONE} "
+  fi
 }
 
 function set_conda_env() {
-	CONDA_ENV_PROMPT="${BLUE}${CONDA_PROMPT_MODIFIER}${COLOR_NONE}"
+  CONDA_ENV_PROMPT="${BLUE}${CONDA_PROMPT_MODIFIER}${COLOR_NONE}"
 }
 
 # Set the full bash prompt.
 function set_bash_prompt() {
-	set_time
+  set_time
 
-	# Set the PROMPT_SYMBOL variable. We do this first so we don't lose the
-	# return value of the last command.
-	set_prompt_symbol $?
+  # Set the PROMPT_SYMBOL variable. We do this first so we don't lose the
+  # return value of the last command.
+  set_prompt_symbol $?
 
-	# Set the PYTHON_VIRTUALENV variable.
-	set_virtualenv
-	#set_conda_env
+  # Set the PYTHON_VIRTUALENV variable.
+  set_virtualenv
+  #set_conda_env
 
-	# Set the BRANCH variable.
-	set_git_branch
+  # Set the BRANCH variable.
+  set_git_branch
 
-	# set k8s prompt
-	set_k8s_prompt
+  # set k8s prompt
+  set_k8s_prompt
 
-	# set AWS profile
-	set_aws_profile
+  # set AWS profile
+  set_aws_profile
 
-	# Set the bash prompt variable.
-	PS1="
+  # Set the bash prompt variable.
+  PS1="
 ${TIME}${PYTHON_VIRTUALENV} ${YELLOW}\w${COLOR_NONE}${BRANCH}${K8S}${CURRENT_AWS_PROFILE}
 ${PROMPT_SYMBOL} "
 }
